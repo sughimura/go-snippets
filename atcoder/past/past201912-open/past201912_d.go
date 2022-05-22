@@ -4,7 +4,6 @@ package main
 
 import (
 	"fmt"
-	"sort"
 )
 
 func main() {
@@ -15,23 +14,17 @@ func main() {
 		fmt.Scan(&a[i])
 	}
 
-	sort.Ints(a)
-
-	var before int
-	for i := 0; i < n; i++ {
-		if a[i] != (i + 1) {
-			before = i + 1
-			break
-		}
-	}
-
 	counts := make(map[int]int)
 	for i := 0; i < n; i++ {
 		counts[a[i]]++
 	}
 
+	var before int
 	var after int
 	for i := 1; i <= n; i++ {
+		if counts[i] == 0 {
+			before = i
+		}
 		if counts[i] == 2 {
 			after = i
 		}
