@@ -1,6 +1,6 @@
 // 17:43 - 18:06(例1->X)
 // 18:39 - 19:30(例1->O,WA)
-// 20:49 -
+// 20:49 - 20:53(AC)
 
 package main
 
@@ -42,7 +42,7 @@ func main() {
 			for x := 1; x <= n; x++ {
 				if f[a][x] == "Y" {
 					for y := 1; y <= n; y++ {
-						if f[x][y] == "Y" {
+						if a != y && f[x][y] == "Y" {
 							wantToFollows[y] = true
 						}
 					}
