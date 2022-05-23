@@ -74,11 +74,11 @@ func main() {
 		d2.rollToRight()
 	}
 	if d1.top() != d2.top() {
-		println("No")
+		fmt.Println("No")
 		return
 	}
 	if d1.bottom() != d2.bottom() {
-		println("No")
+		fmt.Println("No")
 		return
 	}
 	for i := 0; i < 4; i++ {
@@ -88,8 +88,8 @@ func main() {
 		d2.turnToRight()
 	}
 	if d1.front() == d2.front() && d1.back() == d2.back() && d1.right() == d2.right() && d1.left() == d2.left() {
-		println("Yes")
+		fmt.Println("Yes")
 	} else {
-		println("No")
+		fmt.Println("No")
 	}
 }
