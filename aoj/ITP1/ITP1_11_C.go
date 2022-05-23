@@ -50,17 +50,7 @@ func (d *Dice) back() int {
 	return d.way5
 }
 
-func main() {
-	v1 := make([]int, 6)
-	v2 := make([]int, 6)
-	for i := 0; i < 6; i++ {
-		fmt.Scan(&v1[i])
-	}
-	for i := 0; i < 6; i++ {
-		fmt.Scan(&v2[i])
-	}
-	d1 := Dice{v1[0], v1[1], v1[2], v1[3], v1[4], v1[5]}
-	d2 := Dice{v2[0], v2[1], v2[2], v2[3], v2[4], v2[5]}
+func isSameDice(d1 Dice, d2 Dice) bool {
 	if d1.top() == d2.front() {
 		d2.rollToBack()
 	}
@@ -74,12 +64,10 @@ func main() {
 		d2.rollToRight()
 	}
 	if d1.top() != d2.top() {
-		fmt.Println("No")
-		return
+		return false
 	}
 	if d1.bottom() != d2.bottom() {
-		fmt.Println("No")
-		return
+		return false
 	}
 	for i := 0; i < 4; i++ {
 		if d1.front() == d2.front() {
@@ -88,6 +76,24 @@ func main() {
 		d2.turnToRight()
 	}
 	if d1.front() == d2.front() && d1.back() == d2.back() && d1.right() == d2.right() && d1.left() == d2.left() {
+		return true
+	} else {
+		return false
+	}
+}
+
+func main() {
+	v1 := make([]int, 6)
+	v2 := make([]int, 6)
+	for i := 0; i < 6; i++ {
+		fmt.Scan(&v1[i])
+	}
+	for i := 0; i < 6; i++ {
+		fmt.Scan(&v2[i])
+	}
+	d1 := Dice{v1[0], v1[1], v1[2], v1[3], v1[4], v1[5]}
+	d2 := Dice{v2[0], v2[1], v2[2], v2[3], v2[4], v2[5]}
+	if isSameDice(d1, d2) {
 		fmt.Println("Yes")
 	} else {
 		fmt.Println("No")
