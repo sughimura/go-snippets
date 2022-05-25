@@ -1,16 +1,21 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
 	"math"
+	"os"
+	"strconv"
 )
 
 func main() {
 	var n int
 	fmt.Scan(&n)
 	r := make([]int, n)
+	scanner := bufio.NewScanner(os.Stdin)
 	for i := 0; i < n; i++ {
-		fmt.Scan(&r[i])
+		scanner.Scan()
+		r[i], _ = strconv.Atoi(scanner.Text())
 	}
 	maxV := r[1] - r[0]
 	minV := r[0]
