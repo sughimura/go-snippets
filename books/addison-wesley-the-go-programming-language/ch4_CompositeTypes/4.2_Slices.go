@@ -9,6 +9,21 @@ func reverse(s []int) {
 	}
 }
 
+// 配列と異なりスライスは比較可能では無い
+// バイトスライス([]byte)の比較にはbytes.Equalを使えるが
+// それ以外の型のスライスの比較に == は使えないので、自分で比較が必要
+func equal(x, y []string) bool {
+	if len(x) != len(y) {
+		return false
+	}
+	for i := range x {
+		if x[i] != y[i] {
+			return false
+		}
+	}
+	return true
+}
+
 func main() {
 	months := [...]string{
 		1:  "January",
@@ -35,4 +50,8 @@ func main() {
 	fmt.Println(a)
 	fmt.Printf("%T\n", a)    // 配列
 	fmt.Printf("%T\n", a[:]) // スライス
+
+	aa := [...]string{"a", "b", "c"}
+	bb := [...]string{"a", "a", "a"}
+	fmt.Println(equal(aa[:], bb[:]))
 }
