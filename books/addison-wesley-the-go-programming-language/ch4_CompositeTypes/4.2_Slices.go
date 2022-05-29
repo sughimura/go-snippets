@@ -54,4 +54,12 @@ func main() {
 	aa := [...]string{"a", "b", "c"}
 	bb := [...]string{"a", "a", "a"}
 	fmt.Println(equal(aa[:], bb[:]))
+
+	//	4.2.1 append関数
+	var runes []rune
+	for _, r := range "Hello, 世界" {
+		runes = append(runes, r)
+	}
+	fmt.Println(runes)
+	fmt.Printf("%q\n", runes)
 }
